@@ -214,6 +214,7 @@ public class PageDashboardConfigurable extends PageDashboard {
             data.setTitle(widget.getNumberLabel());
             data.setDescription(widget.getMessage());
             data.setIcon(widget.getIconCssClass());
+            data.setSmallBoxCssClass("dashboard-status-widget");
             return data;
         }) {
 
