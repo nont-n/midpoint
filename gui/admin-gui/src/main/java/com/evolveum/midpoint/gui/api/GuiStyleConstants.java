@@ -196,7 +196,7 @@ public class GuiStyleConstants {
     public static final String CLASS_BADGE_ACTIVE = "bg-primary";
     public static final String CLASS_BADGE_PASSIVE = "bg-secondary";
 
-    public static final String DEFAULT_BG_COLOR = "#357DA7"; //blue-light theme
+    public static final String DEFAULT_BG_COLOR = "#f9f9f9"; // custom-logo header background
 
     public static final String CLASS_PLUS_CIRCLE = "fa fa-plus-circle";
     public static final String CLASS_PLUS_CIRCLE_SUCCESS = CLASS_PLUS_CIRCLE + " text-success";

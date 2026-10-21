@@ -1,0 +1,293 @@
+/*
+ * IKP brand theme.
+ * Status colors (success, warning, danger, and info) intentionally retain their
+ * semantic colors. These rules only replace general-purpose UI brand colors.
+ */
+
+$ikp-red: #ff4655;
+$ikp-dark-red: #800000;
+
+:root {
+  --bs-primary: #{$ikp-dark-red};
+  --bs-primary-rgb: 128, 0, 0;
+  --bs-link-color: #{$ikp-dark-red};
+  --bs-link-hover-color: #5c0000;
+}
+
+// The sidebar brand has a separate rendering layer from the main header.
+.app-sidebar .sidebar-brand,
+.app-sidebar .sidebar-brand > .brand-link {
+  background: #f9f9f9 !important;
+}
+
+.app-header,
+.app-sidebar .sidebar-brand.app-header,
+.app-sidebar .sidebar-brand.app-header > .brand-link,
+.app-sidebar .sidebar-brand.app-header > .brand-link.custom-logo {
+  background: #f9f9f9 !important;
+
+  .nav-link,
+  .page-title,
+  .navbar-title {
+    color: #000000 !important;
+  }
+}
+
+.app-header {
+  // A dedicated pseudo-element avoids the separator being obscured by the
+  // nested navbar layout used by AdminLTE.
+  border-bottom: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .10);
+  position: relative;
+  z-index: 1030;
+
+  &::after {
+    background: $ikp-dark-red;
+    bottom: -3px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .10);
+    content: "";
+    height: 3px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.app-header.app-menu-toggle {
+  background-color: #f9f9f9 !important;
+  z-index: 1031;
+}
+
+// The original dark header theme makes these elements white. On the IKP light
+// header, use neutral text and a dark-red icon accent so breadcrumb, locale,
+// and logout controls remain legible.
+.app-header {
+  .breadcrumb,
+  .breadcrumb .breadcrumb-item,
+  .breadcrumb .breadcrumb-item > a,
+  .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    color: #495057 !important;
+  }
+
+  .breadcrumb .breadcrumb-item > a > i,
+  .navbar-nav > .nav-item > .nav-link,
+  .navbar-nav > .nav-item > .nav-link i,
+  .navbar-nav > .nav-item > form .nav-link,
+  .navbar-nav > .nav-item > form .nav-link i {
+    color: $ikp-dark-red !important;
+  }
+
+  .navbar-nav > .nav-item > .nav-link:hover,
+  .navbar-nav > .nav-item > form .nav-link:hover {
+    color: #5c0000 !important;
+  }
+
+  .navbar-nav .dropdown-toggle img {
+    border: 1px solid #d6a1a1;
+    border-radius: 2px;
+  }
+}
+
+// Navigation uses red only for the selected destination. Other menu icons stay neutral.
+.app-sidebar .sidebar-menu > .nav-item > .nav-link.active {
+  background-color: $ikp-red !important;
+  color: #ffffff !important;
+
+  .nav-icon {
+    color: #ffffff !important;
+  }
+}
+
+.app-sidebar .sidebar-menu > .nav-item > .nav-link:not(.active) .nav-icon {
+  color: #6c6c6c !important;
+}
+
+// Dashboard shortcuts represent navigation, not a status, so they share one brand color.
+.dashboard-link-component .info-box-icon {
+  background-color: $ikp-dark-red !important;
+  color: #ffffff !important;
+}
+
+// Configurable dashboard widgets already provide a runtime color based on
+// their result. Render that color as a status accent instead of a full-card
+// background, so healthy, warning, and error states remain understandable.
+.dashboard-status-widget {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e6ea;
+  border-top: 4px solid var(--dashboard-widget-status-color, #{$ikp-dark-red});
+  box-shadow: 0 3px 9px rgba(0, 0, 0, .10);
+  color: #212529 !important;
+
+  .inner {
+    padding-right: 5.5rem;
+
+    h3,
+    p {
+      color: #212529 !important;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .small-box-icon {
+    color: var(--dashboard-widget-status-color, #{$ikp-dark-red}) !important;
+    font-size: 3.5rem;
+    right: 1rem;
+    top: .75rem;
+    width: 3.75rem;
+  }
+
+  > .small-box-footer {
+    background-color: #ffffff !important;
+    border-top: 1px solid #edf0f2;
+    color: var(--dashboard-widget-status-color, #{$ikp-dark-red}) !important;
+  }
+}
+
+// The Info dashboard cards identify object categories, not object state. They
+// use a white surface and a single IKP dark-red accent instead of several
+// saturated colors. Semantic state indicators (success, warning, error, etc.)
+// are deliberately not changed here.
+.object-user-bg,
+.object-org-bg,
+.object-role-bg,
+.object-service-bg,
+.object-resource-bg,
+.object-task-bg {
+  background-color: #ffffff !important;
+  border: 1px solid #f0d2d2 !important;
+  border-top: 3px solid $ikp-dark-red !important;
+  box-shadow: 0 3px 9px rgba(92, 0, 0, .10);
+  color: #212529 !important;
+
+  .info-box-icon,
+  .info-box-text {
+    color: $ikp-dark-red !important;
+  }
+
+  .info-box-number,
+  .progress-description {
+    color: #212529 !important;
+  }
+
+  .progress {
+    background-color: #f3dada;
+  }
+
+  .info-box-progress-bar {
+    background-color: $ikp-dark-red !important;
+  }
+}
+
+// Primary controls and links adopt the dark-red brand color.
+.btn-primary {
+  background-color: $ikp-dark-red !important;
+  border-color: $ikp-dark-red !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #5c0000 !important;
+  border-color: #5c0000 !important;
+}
+
+// Framework primary/info/warning cards are used as section chrome, not statuses.
+.card-primary,
+.card-info,
+.card-warning {
+  border-color: $ikp-dark-red !important;
+}
+
+.card-primary > .card-header,
+.card-info > .card-header,
+.card-warning > .card-header {
+  background-color: $ikp-dark-red !important;
+  border-color: $ikp-dark-red !important;
+  color: #ffffff !important;
+}
+
+.bg-primary:not(.app-header) {
+  background-color: $ikp-dark-red !important;
+}
+
+.border-primary {
+  border-color: $ikp-dark-red !important;
+}
+
+.btn-outline-primary {
+  border-color: $ikp-dark-red;
+  color: $ikp-dark-red;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-color: $ikp-dark-red !important;
+  border-color: $ikp-dark-red !important;
+  color: #ffffff !important;
+}
+
+.nav-tabs .nav-link,
+.nav-pills .nav-link {
+  color: $ikp-dark-red;
+}
+
+.nav-tabs .nav-link.active,
+.nav-pills .nav-link.active,
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $ikp-dark-red !important;
+  border-color: $ikp-dark-red !important;
+  color: #ffffff !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  // Red is reserved for validation and status. A focused field is not an
+  // error, so use a neutral dark outline instead.
+  border-color: #212529;
+  box-shadow: 0 0 0 .20rem rgba(33, 37, 41, .16);
+}
+
+.form-check-input:checked {
+  background-color: $ikp-dark-red;
+  border-color: $ikp-dark-red;
+}
+
+.text-primary,
+.page-link,
+.app-main a:not(.btn) {
+  color: $ikp-dark-red;
+}
+
+.page-item.active .page-link {
+  background-color: $ikp-dark-red;
+  border-color: $ikp-dark-red;
+  color: #ffffff;
+}
+
+.login-box .card-header {
+  background: #f9f9f9 !important;
+  border-color: #f9f9f9 !important;
+}
+
+.login-system-name {
+  display: none;
+}
+
+.login-brand-logo {
+  background: url("../img/Login.png") center / contain no-repeat;
+  display: block;
+  height: 5rem;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 280px;
+}

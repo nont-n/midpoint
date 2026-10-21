@@ -244,9 +244,6 @@ public class LeftMenuPanel extends BasePanel<Void> {
         customLogoImgCss.add(AttributeAppender.append("class", () -> logoModel.getObject().getCssClass()));
         customLogo.add(customLogoImgCss);
 
-        logo.add(PageBase.createHeaderColorStyleModel(false));
-        customLogo.add(PageBase.createHeaderColorStyleModel(false));
-
         SideBarMenuPanel sidebarMenu = new SideBarMenuPanel(ID_MENU, sideBarMenuModel);
         add(sidebarMenu);
     }
