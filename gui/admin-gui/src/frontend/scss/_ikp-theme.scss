@@ -42,7 +42,7 @@ $ikp-dark-red: #800000;
   z-index: 1030;
 
   &::after {
-    background: $ikp-dark-red;
+    background: #e2e6ea;
     bottom: -3px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, .10);
     content: "";
@@ -184,6 +184,121 @@ $ikp-dark-red: #800000;
   }
 }
 
+// Type-selection cards (Request access, New user, and New role) represent a
+// user choice, not a semantic status. Keep their surfaces neutral and use the
+// IKP dark red only for the icon and the selected/hovered state.
+.tiles-wizard .simple-tile,
+[role="radiogroup"] .simple-tile {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e6ea !important;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, .08);
+
+  // Tile definitions supply text-success, text-primary, and text-info based on
+  // the object category. In these choice screens they are not status signals.
+  i,
+  .text-info {
+    color: $ikp-dark-red !important;
+  }
+
+  .tile-title,
+  .tile-description,
+  .text-secondary {
+    color: #495057 !important;
+  }
+
+  &:hover,
+  &.active {
+    background-color: #fff5f5 !important;
+    border-color: $ikp-dark-red !important;
+    box-shadow: 0 3px 10px rgba(128, 0, 0, .14);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 .20rem rgba(128, 0, 0, .20);
+  }
+}
+
+// Request-access wizard: steps and catalog controls are navigation, not status.
+// Reserve green for completion/availability indicators and blue for count badges.
+.bs-stepper {
+  .step.active {
+    .bs-stepper-circle {
+      background-color: $ikp-dark-red !important;
+    }
+
+    .bs-stepper-label {
+      color: $ikp-dark-red !important;
+    }
+  }
+
+  .step:not(.active) {
+    .bs-stepper-circle {
+      background-color: #6c757d !important;
+    }
+
+    .bs-stepper-label {
+      color: #495057 !important;
+    }
+  }
+}
+
+// Catalog cards identify roles; their icon colors must not imply a status.
+.role-catalog-tiles-table .catalog-tile-panel {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e6ea !important;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, .08);
+
+  .logo {
+    background-color: #f1f4f6 !important;
+
+    i,
+    .fa,
+    .fas,
+    .far,
+    .fab {
+      color: $ikp-dark-red !important;
+    }
+  }
+
+  > .mt-4 > i,
+  .btn-link.text-info {
+    color: $ikp-dark-red !important;
+  }
+
+  .btn-info {
+    background-color: $ikp-dark-red !important;
+    border-color: $ikp-dark-red !important;
+    color: #ffffff !important;
+  }
+
+  .btn-info:hover,
+  .btn-info:focus {
+    background-color: #5c0000 !important;
+    border-color: #5c0000 !important;
+  }
+
+  &.active,
+  &:hover {
+    border-color: $ikp-dark-red !important;
+    box-shadow: 0 3px 10px rgba(128, 0, 0, .14);
+  }
+}
+
+// List-group menus are filter navigation. Keep their active choice on-brand
+// while leaving count badges untouched.
+.list-group-menu {
+  --bs-list-group-action-hover-bg: #fff5f5;
+  --bs-list-group-action-hover-color: #{$ikp-dark-red};
+  --bs-list-group-active-bg: #{$ikp-dark-red};
+  --bs-list-group-active-border-color: #{$ikp-dark-red};
+
+  .item.active {
+    background-color: $ikp-dark-red !important;
+    color: #ffffff !important;
+  }
+}
+
 // Primary controls and links adopt the dark-red brand color.
 .btn-primary {
   background-color: $ikp-dark-red !important;
@@ -196,6 +311,50 @@ $ikp-dark-red: #800000;
 .btn-primary:active {
   background-color: #5c0000 !important;
   border-color: #5c0000 !important;
+}
+
+// Informational buttons are generic UI actions, not runtime statuses. Keep
+// success, warning, and danger controls semantic; brand only this action style.
+.btn-info {
+  background-color: $ikp-dark-red !important;
+  border-color: $ikp-dark-red !important;
+  color: #ffffff !important;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+  background-color: #5c0000 !important;
+  border-color: #5c0000 !important;
+  color: #ffffff !important;
+}
+
+.btn-outline-info {
+  border-color: $ikp-dark-red !important;
+  color: $ikp-dark-red !important;
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus,
+.btn-outline-info:active {
+  background-color: $ikp-dark-red !important;
+  border-color: $ikp-dark-red !important;
+  color: #ffffff !important;
+}
+
+// Help markers and action links are UI chrome rather than a status indicator.
+// This removes the remaining teal without changing semantic status colors.
+.app-main {
+  .btn-link.text-info,
+  a.text-info,
+  .help-icon-after-label,
+  .fa-info-circle.text-info {
+    color: $ikp-dark-red !important;
+  }
+}
+
+footer.app-footer a {
+  color: $ikp-dark-red !important;
 }
 
 // Framework primary/info/warning cards are used as section chrome, not statuses.
